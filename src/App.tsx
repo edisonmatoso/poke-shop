@@ -2,12 +2,15 @@ import { Provider } from 'use-http'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Shop from './components/Shop'
 import Options from './components/Options'
+import useStyles from './App.styles'
 
 const App = () => {
+  const classes = useStyles()
+
   return (
     <Provider url="https://pokeapi.co/api/v2">
       <Router>
-        <div className="App">
+        <div className={classes.appRoot}>
           <Switch>
             <Route path="/fire">
               <Shop type="fire" />
