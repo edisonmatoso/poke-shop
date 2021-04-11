@@ -38,7 +38,6 @@ const useStyles = makeStyles(theme => ({
 
     [theme.breakpoints.down('sm')]: {
       '&::before': {
-
         left: 100,
         transition: 'left .10s',
       },

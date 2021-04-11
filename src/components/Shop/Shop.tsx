@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import usePokemon from '../../hooks/usePokemon'
 import { PokemonType } from '../../types'
 
@@ -6,12 +7,20 @@ type ShopProps = {
 }
 
 const Shop = ({ type }: ShopProps) => {
-  const { pokemonList, loading } = usePokemon({ type })
+  const { pokemonList, loading, fetchPokemon } = usePokemon({ type })
+
+  const loadPokemon = async () => {
+    await fetchPokemon()
+  }
+
+  useEffect(() => {
+    loadPokemon()
+  }, [])
 
   return (
     <div>
       {loading && 'Loading...'}
-      {pokemonList?.map(({ pokemon }) => (
+      {pokemonList?.map((pokemon) => (
         <li key={pokemon.name}>
           <ul>{pokemon.name}</ul>
         </li>

@@ -1,4 +1,6 @@
+import { useContext } from 'react'
 import useFetch from 'use-http'
+import { PokemonContext } from '../context/PokemonProvider/PokemonProvider'
 import { Pokemon, PokemonType } from '../types'
 
 type PokemonFetch = {
@@ -6,14 +8,21 @@ type PokemonFetch = {
 }
 
 const usePokemon = ({ type }: {type: PokemonType}) => {
+  const { pokemonList, setPokemonList } = useContext(PokemonContext)
   const {
-    data,
-    loading
-  } = useFetch<PokemonFetch>(`/type/${type}`, [])
+    get, loading, error
+  } = useFetch<PokemonFetch>(`/type/${type}`)
+
+  const fetchPokemon = async () => {
+    const { pokemon } = await get()
+    setPokemonList(pokemon)
+  }
 
   return {
-    pokemonList: data?.pokemon,
-    loading
+    error,
+    fetchPokemon,
+    loading,
+    pokemonList,
   }
 }
 
