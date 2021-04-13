@@ -22,5 +22,6 @@ module.exports = {
     'multiline-ternary': 'off',
     indent: 'off',
     'react/display-name': 'off',
+    camelcase: 'off',
   },
 }

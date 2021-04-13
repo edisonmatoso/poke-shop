@@ -5,6 +5,11 @@ const useStyles = makeStyles(theme => ({
     width: '100%',
     borderBottom: `2px solid ${theme.palette.primary.main}`,
     textTransform: 'capitalize',
+  },
+  contentPrimary: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center'
   }
 }))
 

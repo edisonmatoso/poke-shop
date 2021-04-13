@@ -37,7 +37,7 @@ const PokemonList = ({ type }: PokemonListProps) => {
   }, [])
 
   return (
-    <div style={{ height: '100%', overflow: 'auto' }}>
+    <div className={classes.listRoot}>
       {loading && 'Loading...'}
       {pokemonList?.length ? (
         <>
