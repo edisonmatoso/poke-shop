@@ -19,5 +19,8 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'space-before-function-paren': 'off',
     'comma-dangle': 'off',
+    'multiline-ternary': 'off',
+    indent: 'off',
+    'react/display-name': 'off',
   },
 }
