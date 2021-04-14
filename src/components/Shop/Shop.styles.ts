@@ -20,12 +20,19 @@ const useStyles = makeStyles(theme => ({
   content: {
     overflow: 'hidden',
     display: 'flex',
+    position: 'relative'
   },
   cart: {
     flex: 0.3,
     margin: theme.spacing(1),
     display: 'flex',
     justifyContent: 'center'
+  },
+  cartMobile: {
+    position: 'absolute'
+  },
+  backButtonCart: {
+    paddingLeft: 0
   }
 }))
 
