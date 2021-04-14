@@ -25,6 +25,10 @@ const usePokemon = ({ type }: {type: PokemonType}) => {
     setPokemonList(fetchedPokemon)
   }, [fetchedPokemon])
 
+  useEffect(() => {
+    window.localStorage.setItem('cart', JSON.stringify(cart))
+  }, [cart])
+
   const fetchPokemon = async () => {
     setFetchedPokemon(undefined)
     const { pokemon } = await get()
@@ -76,8 +80,14 @@ const usePokemon = ({ type }: {type: PokemonType}) => {
     }
   }
 
+  const checkout = (type: PokemonType) => {
+    const newCart = cart.filter(cartItem => cartItem.pokemon.type !== type)
+    setCart(newCart)
+  }
+
   return {
     cart,
+    checkout,
     error,
     fetchPokemon,
     filterPokemonList,

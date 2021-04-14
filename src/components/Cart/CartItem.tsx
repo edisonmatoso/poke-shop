@@ -20,18 +20,17 @@ const CartItem = ({ item, handleRemoveCart }: CartItemProps) => {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      {hovered ? (
-        <IconButton onClick={() => handleRemoveCart(item.pokemon)}>
-          <DeleteIcon color="primary" />
-        </IconButton>
-      ) : (
-        <img src={item.pokemon.imageFront} alt={item.pokemon.name} />
-      )}
+      <img src={item.pokemon.imageFront} alt={item.pokemon.name} />
       <div className={classes.details}>
         <Typography variant="caption">{item.pokemon.name}</Typography>
         <Typography variant="caption">${item.pokemon.price}</Typography>
         <Typography variant="caption">x{item.quantity}</Typography>
       </div>
+      {hovered && (
+        <IconButton onClick={() => handleRemoveCart(item.pokemon)}>
+          <DeleteIcon color="primary" />
+        </IconButton>
+      )}
     </div>
   )
 }

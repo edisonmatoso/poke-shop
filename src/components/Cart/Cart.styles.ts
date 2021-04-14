@@ -4,8 +4,12 @@ const useStyles = makeStyles({
   cartRoot: {
     display: 'flex',
     flexDirection: 'column',
-    width: '100%'
+    width: '100%',
+    justifyContent: 'space-between'
   },
+  list: {
+    overflow: 'auto'
+  }
 })
 
 export default useStyles
