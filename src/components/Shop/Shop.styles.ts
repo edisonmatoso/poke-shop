@@ -18,9 +18,14 @@ const useStyles = makeStyles(theme => ({
     }
   },
   content: {
-    height: 'inherit',
     overflow: 'hidden',
     display: 'flex',
+  },
+  cart: {
+    flex: 0.3,
+    margin: theme.spacing(1),
+    display: 'flex',
+    justifyContent: 'center'
   }
 }))
 

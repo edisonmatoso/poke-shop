@@ -5,8 +5,8 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column',
   },
-  cartButton: {
-    cursor: 'pointer'
+  actions: {
+    padding: `${theme.spacing(1)}px ${theme.spacing(3)}px`,
   },
   imagesContainer: {
     display: 'flex',
@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
   },
   tableHead: {
     backgroundColor: theme.palette.primary.light
-  }
+  },
 }))
 
 export default useStyles

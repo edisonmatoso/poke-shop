@@ -6,7 +6,12 @@ const useStyles = makeStyles(theme => ({
     borderBottom: `2px solid ${theme.palette.primary.main}`,
     textTransform: 'capitalize',
   },
-  contentPrimary: {
+  infos: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center'
+  },
+  shop: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center'

@@ -1,8 +1,10 @@
-import { PokemonItem } from '../../types'
+import { PokemonItem, PokemonType } from '../../types'
 
 export type PokemonItemProps = {
   name: PokemonItem['name']
   url: PokemonItem['url']
+  handleAddCart: (pokemon: PokemonDetail) => void
+  type: PokemonType
 }
 
 export type PokemonItemFetch = {
@@ -23,6 +25,8 @@ export type PokemonDetail = {
   imageFront: string
   imageBack: string
   stats: Stats[]
+  price: number
+  type: PokemonType
 }
 
 export type Stats = {

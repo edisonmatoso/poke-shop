@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
   Card,
   CardContent,
@@ -7,17 +7,20 @@ import {
   Typography,
 } from '@material-ui/core'
 import FullscreenIcon from '@material-ui/icons/Fullscreen'
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart'
 import useFetch from 'use-http'
 import useStyles from './PokemonItem.styles'
-import { PokemonDetails } from './components'
 import { PokemonDetail, PokemonItemFetch, PokemonItemProps } from './types'
+import PokemonDetails from './PokemonDetails'
 
-const PokemonItem = ({ name, url }: PokemonItemProps) => {
+const PokemonItem = ({ name, url, handleAddCart, type }: PokemonItemProps) => {
   const [openModal, setOpenModal] = useState(false)
   const [pokemon, setPokemon] = useState<PokemonDetail>()
   const { get } = useFetch(url)
   const classes = useStyles()
   const capitalizedName = name.charAt(0).toUpperCase() + name.slice(1)
+
+  const price = name.length * 52
 
   const fetchItem = async () => {
     const data: PokemonItemFetch | undefined = await get()
@@ -35,6 +38,8 @@ const PokemonItem = ({ name, url }: PokemonItemProps) => {
         imageFront: data.sprites.front_default,
         imageBack: data.sprites.back_default,
         stats: formattedStats,
+        price: price,
+        type: type,
       }
 
       setPokemon(pokemonObj)
@@ -48,12 +53,6 @@ const PokemonItem = ({ name, url }: PokemonItemProps) => {
   const handleOpenModal = () => setOpenModal(true)
   const handleCloseModal = () => setOpenModal(false)
 
-  const getPrice = useCallback(() => {
-    return (Math.random() * 100).toFixed(2)
-  }, [name, url])
-
-  const price = getPrice()
-
   return (
     <>
       {pokemon && (
@@ -61,13 +60,18 @@ const PokemonItem = ({ name, url }: PokemonItemProps) => {
           <Card className={classes.itemRoot}>
             <CardMedia style={{ height: 250 }} image={pokemon?.imageFront} />
             <CardContent>
-              <div className={classes.contentPrimary}>
+              <div className={classes.infos}>
                 <Typography>{pokemon.name}</Typography>
-                <IconButton onClick={handleOpenModal}>
+                <IconButton onClick={handleOpenModal} aria-label="See details">
                   <FullscreenIcon color="primary" />
                 </IconButton>
               </div>
-              <Typography variant="caption">${price}</Typography>
+              <div className={classes.shop}>
+                <Typography variant="caption">${pokemon.price}</Typography>
+                <IconButton onClick={() => handleAddCart(pokemon)}>
+                  <AddShoppingCartIcon color="primary" />
+                </IconButton>
+              </div>
             </CardContent>
           </Card>
 
@@ -75,6 +79,7 @@ const PokemonItem = ({ name, url }: PokemonItemProps) => {
             pokemon={pokemon}
             open={openModal}
             handleCloseModal={handleCloseModal}
+            handleAddCart={handleAddCart}
           />
         </>
       )}

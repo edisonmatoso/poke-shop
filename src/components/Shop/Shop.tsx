@@ -4,6 +4,7 @@ import { useHistory } from 'react-router'
 import usePokemon from '../../hooks/usePokemon'
 import iconsPath from '../../iconsPath'
 import { PokemonType } from '../../types'
+import Cart from '../Cart'
 import PokemonList from '../PokemonList'
 import useStyles from './Shop.styles'
 
@@ -12,7 +13,7 @@ type ShopProps = {
 }
 
 const Shop = ({ type }: ShopProps) => {
-  const { filterPokemonList } = usePokemon({ type })
+  const { filterPokemonList, cart } = usePokemon({ type })
   const classes = useStyles()
   const imgSrc = `${process.env.PUBLIC_URL}${iconsPath[type]}`
   const { goBack } = useHistory()
@@ -34,6 +35,9 @@ const Shop = ({ type }: ShopProps) => {
       </header>
       <div className={classes.content}>
         <PokemonList type={type} />
+        <div className={classes.cart}>
+          <Cart cart={cart} type={type} />
+        </div>
       </div>
     </div>
   )

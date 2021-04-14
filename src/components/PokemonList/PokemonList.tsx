@@ -27,7 +27,9 @@ type PokemonListProps = {
 
 const PokemonList = ({ type }: PokemonListProps) => {
   const classes = useStyles()
-  const { pokemonList, loading, fetchPokemon } = usePokemon({ type })
+  const { pokemonList, loading, fetchPokemon, handleAddCart } = usePokemon({
+    type,
+  })
   const loadPokemon = async () => {
     await fetchPokemon()
   }
@@ -66,7 +68,12 @@ const PokemonList = ({ type }: PokemonListProps) => {
           <ul className={classes.listContainer}>
             {pokemonList.map(({ pokemon }, index) => (
               <li key={pokemon.name} className={classes.itemContainer}>
-                <PokemonItem name={pokemon.name} url={pokemon.url} />
+                <PokemonItem
+                  name={pokemon.name}
+                  url={pokemon.url}
+                  handleAddCart={handleAddCart}
+                  type={type}
+                />
               </li>
             ))}
           </ul>

@@ -3,6 +3,7 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
+  IconButton,
   Paper,
   Table,
   TableBody,
@@ -14,18 +15,20 @@ import {
 } from '@material-ui/core'
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart'
 import useStyles from './PokemonDetails.styles'
-import { PokemonDetail } from '../../types'
+import { PokemonDetail } from './types'
 
 type PokemonDetailsProps = {
   pokemon: PokemonDetail
   open: boolean
   handleCloseModal: () => void
+  handleAddCart: (pokemon: PokemonDetail) => void
 }
 
 const PokemonDetails = ({
   pokemon,
   open,
   handleCloseModal,
+  handleAddCart,
 }: PokemonDetailsProps) => {
   const classes = useStyles()
 
@@ -61,13 +64,11 @@ const PokemonDetails = ({
           </Table>
         </TableContainer>
       </DialogContent>
-      <DialogActions>
-        <Tooltip title={`Add ${pokemon.name} to cart`}>
-          <AddShoppingCartIcon
-            color="primary"
-            aria-label={`Add ${pokemon.name} to cart`}
-            className={classes.cartButton}
-          />
+      <DialogActions className={classes.actions}>
+        <Tooltip title="Add to cart">
+          <IconButton onClick={() => handleAddCart(pokemon)}>
+            <AddShoppingCartIcon color="primary" />
+          </IconButton>
         </Tooltip>
       </DialogActions>
     </Dialog>
