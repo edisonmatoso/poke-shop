@@ -10,8 +10,20 @@ import FullscreenIcon from '@material-ui/icons/Fullscreen'
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart'
 import useFetch from 'use-http'
 import useStyles from './PokemonItem.styles'
-import { PokemonDetail, PokemonItemFetch, PokemonItemProps } from './types'
 import PokemonDetails from './PokemonDetails'
+import {
+  PokemonDetail,
+  PokemonItem as PokemonItemType,
+  PokemonItemFetch,
+  PokemonType,
+} from '../../types'
+
+type PokemonItemProps = {
+  name: PokemonItemType['name']
+  url: PokemonItemType['url']
+  handleAddCart: (pokemon: PokemonDetail) => void
+  type: PokemonType
+}
 
 const PokemonItem = ({ name, url, handleAddCart, type }: PokemonItemProps) => {
   const [openModal, setOpenModal] = useState(false)

@@ -14,8 +14,8 @@ import {
   Tooltip,
 } from '@material-ui/core'
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart'
+import { PokemonDetail } from '../../types'
 import useStyles from './PokemonDetails.styles'
-import { PokemonDetail } from './types'
 
 type PokemonDetailsProps = {
   pokemon: PokemonDetail

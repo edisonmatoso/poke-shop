@@ -1,8 +1,7 @@
 import { ChangeEvent, useContext, useEffect } from 'react'
 import useFetch from 'use-http'
-import { PokemonDetail } from '../components/PokemonItem/types'
 import { PokemonContext } from '../context/PokemonProvider/PokemonProvider'
-import { CartItem, Pokemon, PokemonType } from '../types'
+import { CartItem, Pokemon, PokemonDetail, PokemonType } from '../types'
 
 type PokemonFetch = {
   pokemon: Pokemon[]
