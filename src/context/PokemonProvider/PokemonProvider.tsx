@@ -26,7 +26,10 @@ const defaultValues: PokemonContextType = {
 export const PokemonContext = React.createContext(defaultValues)
 
 const PokemonProvider = ({ children }: PokemonProviderType) => {
-  window.localStorage.setItem('cart', '[]')
+  const storageCart = JSON.parse(window.localStorage.getItem('cart') ?? '[]')
+  const hasCartItem = !!storageCart
+
+  const initialCart = hasCartItem ? storageCart : []
 
   const [pokemonList, setPokemonList] = React.useState<
     PokemonContextType['pokemonList']
@@ -35,7 +38,7 @@ const PokemonProvider = ({ children }: PokemonProviderType) => {
     PokemonContextType['fetchedPokemon']
   >()
   const [cart, setCart] = React.useState<PokemonContextType['cart']>(
-    JSON.parse(window.localStorage.getItem('cart') ?? '{}') ?? []
+    initialCart
   )
 
   return (
