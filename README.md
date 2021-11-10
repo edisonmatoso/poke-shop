@@ -1,10 +1,14 @@
+
 # poke-shop
 
-The poke-shop had built using [React](https://reactjs.org/), [Typescript](https://www.typescriptlang.org/), [react-router](https://reactrouter.com/web/guides/quick-start) and [Material-UI](https://material-ui.com/), the was API used is [PokeAPI](https://pokeapi.co/).
+The app has five different shops, by pokemon type, using the same code-base. You can see the app running [here](https://lucid-noether-839b38.netlify.app/)
 
-The app has five different shops (with pokemon types) using the same code-base.
+## Technical Description
 
-You can see the app running [here](https://lucid-noether-839b38.netlify.app/)
+The application had built using [React](https://reactjs.org/), [Typescript](https://www.typescriptlang.org/), [react-router](https://reactrouter.com/web/guides/quick-start) and [Material-UI](https://material-ui.com/), the API used was [PokeAPI](https://pokeapi.co/).
+
+To be possible to run the five shops using the same code I wrote a Context, where I built a data structure that allows distributing the fetched data to each of the stores.
+The code organization was created thinking in [module colocation](https://kentcdodds.com/blog/colocation).
 
 ## Available Scripts
 
