@@ -9,11 +9,6 @@ export type PokemonItem = {
 
 export type PokemonType = 'water' | 'fire' | 'grass' | 'rock' | 'psychic'
 
-export type CartItem = {
-  pokemon: PokemonDetail
-  quantity: number
-}
-
 export type PokemonItemFetch = {
   sprites: {
     front_default: string

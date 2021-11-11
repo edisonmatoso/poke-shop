@@ -1,5 +1,6 @@
 import React from 'react'
-import { CartItem, Pokemon } from '../../types'
+import { CartItem } from '../../components/Cart/types'
+import { Pokemon } from '../../types'
 
 type PokemonContextType = {
   pokemonList: Pokemon[] | undefined
@@ -31,15 +32,12 @@ const PokemonProvider = ({ children }: PokemonProviderType) => {
 
   const initialCart = hasCartItem ? storageCart : []
 
-  const [pokemonList, setPokemonList] = React.useState<
-    PokemonContextType['pokemonList']
-  >()
-  const [fetchedPokemon, setFetchedPokemon] = React.useState<
-    PokemonContextType['fetchedPokemon']
-  >()
-  const [cart, setCart] = React.useState<PokemonContextType['cart']>(
-    initialCart
-  )
+  const [pokemonList, setPokemonList] =
+    React.useState<PokemonContextType['pokemonList']>()
+  const [fetchedPokemon, setFetchedPokemon] =
+    React.useState<PokemonContextType['fetchedPokemon']>()
+  const [cart, setCart] =
+    React.useState<PokemonContextType['cart']>(initialCart)
 
   return (
     <PokemonContext.Provider

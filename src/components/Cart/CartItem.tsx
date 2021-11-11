@@ -1,8 +1,9 @@
 import { IconButton, Typography } from '@material-ui/core'
 import { useState } from 'react'
-import { CartItem as CartItemType, PokemonDetail } from '../../types'
+import { PokemonDetail } from '../../types'
 import useStyles from './CartItem.styles'
 import DeleteIcon from '@material-ui/icons/Delete'
+import { CartItem as CartItemType } from './types'
 
 type CartItemProps = {
   item: CartItemType
